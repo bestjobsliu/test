@@ -17,7 +17,12 @@ Route::get('/', function () {
 
 
 
-Route::get('/index', 'indexController@index');
+Route::get('/index', 'userController@index');
+Route::get('/permission/all', 'permissionController@all');
+Route::get('/role/all', 'roleController@all');
+
+Route::get('/user/getUserList', 'userController@getUserList');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

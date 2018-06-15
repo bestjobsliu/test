@@ -6,10 +6,17 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Auth;
 use DB;
+use App\Models\Roles;
+use Illuminate\Http\Request;
 
-class indexController extends Controller
+class roleController extends Controller
 {
 
+    public function all(Roles $roles,Request $request){
+        $page = $request->input('page') ?? 1;
+        $rolesInfo = $roles->paginate(10,['*'],'page',$page);
+        return $rolesInfo;
+    }
 
     public function index(){
 
