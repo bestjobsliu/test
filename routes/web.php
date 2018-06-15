@@ -20,6 +20,9 @@ Route::get('/', function () {
 Route::get('/index', 'userController@index');
 Route::get('/permission/all', 'permissionController@all');
 Route::get('/role/all', 'roleController@all');
+Route::get('/role/update', 'roleController@updateGet');
+
+
 
 Route::get('/user/getUserList', 'userController@getUserList');
 

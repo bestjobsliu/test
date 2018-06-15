@@ -26,7 +26,7 @@ class roleController extends Controller
 
     public function updateGet(){
 
-        return view('role.index');
+        return view('role.update');
 
     }
 

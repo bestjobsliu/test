@@ -9,7 +9,7 @@
         <header class="header">
             <div class="container">
                 <div class="fl">
-                    <a class="logo" href="/permissionDepartment"> Yoozoo <!-- <img src="" alt="中控台"> --></a>
+                    <a class="logo" href="/permissionDepartment"> Yoozoo</a>
                 </div>
                 <div class="nav-list fl">
                     <a class="nav-item active" href="/permissionDepartment" data-type="0">用户管理</a>
@@ -19,7 +19,7 @@
                 <div class="user-info fr">
                     <dropdown trigger="click" style="margin-left: 20px" @on-click="menuClick">
                         <a href="javascript:void(0)">
-                            <?=$username?>
+
                             <Icon type="arrow-down-b"></Icon>
                         </a>
                         <dropdown-menu slot="list">
@@ -41,27 +41,19 @@
                 </div>
                 <div class="main-right">
                     <div class="user-list">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <td>姓名</td>
-                                <td>邮箱</td>
-                                <td>角色</td>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr v-for="userInfo in userlist">
-                                <td v-text="userInfo.name"></td>
-                                <td v-text="userInfo.email"></td>
-                                <td>
-                                    <i-select @on-change="workChange(userInfo)" v-model="userInfo.position" style="width: 200px;">
-                                        <i-option v-for="item in worklist" :value="item.id" :key="item.value" :label="item.name"></i-option>
-                                    </i-select>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <page :total="userCount" show-sizer @on-change="pageChange" :current="currentPage" :page-size="pageSize" @on-page-size-change="pageSizeChange"></page>
+                        <template>
+                            <div style="border-bottom: 1px solid #e9e9e9;padding-bottom:6px;margin-bottom:6px;">
+                                <Checkbox
+                                        :indeterminate="indeterminate"
+                                        :value="checkAll"
+                                        @click.prevent.native="handleCheckAll">全选</Checkbox>
+                            </div>
+                            <Checkbox-group v-model="checkAllGroup" @on-change="checkAllGroupChange">
+                                <Checkbox label="香蕉"></Checkbox>
+                                <Checkbox label="苹果"></Checkbox>
+                                <Checkbox label="西瓜"></Checkbox>
+                            </Checkbox-group>
+                        </template>
                     </div>
                 </div>
             </div>
@@ -74,6 +66,6 @@
 
 
 
-<script src = "{{ asset('js/permissionDepartment.js') }}" ></script>
+<script src = "{{ asset('js/role.js') }}" ></script>
 
 @extends('layouts.footer')
